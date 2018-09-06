@@ -25,6 +25,10 @@ app.get("/api/hello", function (req, res) {
 });
 
 
+app.get("/api/whoami",function(req,res){
+ res.json({"ipaddress":req.headers['x-forwarded-for'].split(',')[0],"language":req.headers['accept-language'],"software":req.headers['user-agent']});
+});
+
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
